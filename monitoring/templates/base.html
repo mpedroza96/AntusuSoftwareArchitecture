@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block head %}
+  <title>Nameless</title>
+  {% endblock %}
+  <!-- Bootstrap core CSS -->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css'" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/static/css/shop-homepage.css'" rel="stylesheet">
+
+</head>
+<body>
+<br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/catalogo/">Catalogo</a>
+                </li>
+            </ul>
+  <form class="form-inline my-2 my-lg-0">
+    {% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+        {% if user.username == 'davand20' %}
+            <li><a style="font-size:120%" class="nav-link" href="/catalogocreate/">Añadir Producto</a></li>
+        {% endif %}
+        <li><a style="font-size:120%" class="nav-link" href="/datocreate/">Datos de compra</a></li>
+        <li><a style="font-size:120%" class="nav-link">{{ user.username }}</a></li>
+
+      <li><a style="font-size:120%; padding-right:20px" class="nav-link" href="/logout">Log out</a></li>
+    </ul>
+    {% else %}
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a style="font-size:120%; padding-right:20px" class="navbar-link" href="/login/auth0">Login</a></li>
+    </ul>
+    {% endif %}
+  </form>
+
+  </div>
+</nav>
+
+
+<!-- Page Content -->
+<main>
+  <div class="container">
+    {% block content %} 
+
+    {% endblock %} 
+  </div>
+  <!-- /.container -->
+</main>
+</body>
+
+</html>
